@@ -1,7 +1,6 @@
 package ru.maxima.springmvc.models;
 
 
-
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -19,6 +18,8 @@ public class Person {
     @NotEmpty(message = "Email should not be empty")
     @Email(message = "Email is not valid")
     private String email;
+
+    private boolean isAdmin;
 
     public Person() {
     }
@@ -60,5 +61,13 @@ public class Person {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
     }
 }
