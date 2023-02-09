@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>One Book</title>
+</head>
+<body>
+<p th:text="${book.getName() + ' '}">value</p>
+<p th:text="${book.getAuthor() + ' '}">value</p>
+<p th:text="${book.getYearOfCreation()}">value</p>
+<p th:text="${book.getId()}">value</p>
+
+<a th:href="@{/books/{id}/edit(id=${book.getId()})}">Edit</a>
+
+<form th:method="DELETE" th:action="@{/books/{id}(id=${book.getId()})}">
+    <input type="submit" value="Delete!">
+    <p>
+    <p>
+    <form th:metod="PATCH" th:action="@{/books/{id}}">
+        <label>Choose person to make him admin</label>
+        <select th:object="${person}" th:field="*{id}" id="person">
+            <option th:each="person : ${people}" th:value="${person.getId()}"
+                    th:text="${person.getName()}">
+            </option>
+        </select>
+        <input type="submit" value="Make admin">
+    </form>
+
+</form>
+</body>
+</html>
